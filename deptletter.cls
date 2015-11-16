@@ -10,8 +10,6 @@
 
 \LoadClass[letterpaper]{letter}
 
-\def\@texttop{}
-
 \setlength{\headheight}{76pt}
 
 \setlength{\textwidth}{5.125in}
@@ -30,7 +28,7 @@
   {\fancyhead[C]
     {\includegraphics[height=1in, keepaspectratio=true]{logo.pdf}}}
 
-\newcommand{\showmyfoot}{\today}
+\newcommand{\showmyfoot}{}
 \newcommand{\myfoot}[1]{\renewcommand{\showmyfoot}{\xcmrmnl #1}}
 
 \fancyfoot[c]{\showmyfoot}
