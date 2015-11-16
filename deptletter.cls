@@ -1,10 +1,8 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{deptletter}
 
-\RequirePackage{ifthen}
 \RequirePackage{graphicx}
 \RequirePackage{fancyhdr}
-\RequirePackage{lipsum}
 \RequirePackage[letterpaper]{geometry}
 \RequirePackage{pxfonts}
 
@@ -35,18 +33,12 @@
 \newcommand{\letterstart}{\begin{letter}{\showcontact}}
 \newcommand{\letterend}{\end{letter}}
 
-
 \newcommand{\showletterdate}{\today}
 \newcommand{\letterdate}[1]{\renewcommand{\showletterdate}{\xcmrmn #1}}
 \renewcommand{\headrulewidth}{0pt}
 \date{\showletterdate}
    
 \pagestyle{fancy}
-\makeatletter
-
-\newcommand{\subjectname}{Subject}
-\newcommand{\@subject}{}
-\newcommand{\subject}[1]{\renewcommand{\@subject}{\subjectname: #1}}
 
 \newcommand{\showwebsite}{}
 \newcommand{\website}[1]{\renewcommand{\showwebsite}{{\\ #1}}}
@@ -59,4 +51,3 @@
   \xcmrmn #1
   {\ixcmrmn {\showwebsite}}}}
 
-\makeatother 
