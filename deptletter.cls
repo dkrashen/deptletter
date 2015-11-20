@@ -41,14 +41,6 @@
 % configurable commands, values set in tex file
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtoggle{headerimage}
-\togglefalse{headerimage}
-\newcommand{\@headerimagefilename}{}
-\newcommand{\setheaderimage}[1]{
-  \toggletrue{headerimage}
-  \renewcommand{\@headerimagefilename}{#1}
-}
-
 \newtoggle{signatureexists}
 \togglefalse{signatureexists}
 \newcommand{\@signatureimagefilename}{}
@@ -94,13 +86,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % header with logo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\iftoggle{headerimage}
-{
+
+\newcommand{\setheaderimage}[1]{
   \fancypagestyle{firstpage}
     {\fancyhead[C]
-      {\includegraphics[height=1in, keepaspectratio=true]
-        {\@headerimagefilename}}}
-} {}
+      {\includegraphics[height=1in, keepaspectratio=true] {#1}}}}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
