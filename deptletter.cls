@@ -54,12 +54,24 @@
 \newcommand{\myfoot}[1]{\renewcommand{\showmyfoot}{\xcmrmnl #1}}
 
 \fancyfoot[c]{\showmyfoot}
-\newcommand{\letterstart}{\begin{letter}{\showcontact}}
-\newcommand{\letterend}{\end{letter}}
+\newcommand{\letterstart}[1]{
+  \begin{letter}{\showcontact}
+  
+  \opening{#1}
+}
+
+\newcommand{\letterend}[1]{
+  \closing{#1 \\
+    \fromsig{\includegraphics[height=.7in]{signature.pdf}}\\
+    \fromname{\showname}}
+  \end{letter}
+}
 
 \newcommand{\showletterdate}{\today}
 \newcommand{\letterdate}[1]{\renewcommand{\showletterdate}{\xcmrmn #1}}
    
+\newcommand{\showname}{}
+\newcommand{\setname}[1]{\renewcommand{\showname}{#1}}
 
 \newcommand{\showwebsite}{}
 \newcommand{\website}[1]{\renewcommand{\showwebsite}{{\\ #1}}}
