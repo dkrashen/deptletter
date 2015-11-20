@@ -44,26 +44,26 @@
 \newtoggle{signatureexists}
 \togglefalse{signatureexists}
 \newcommand{\@signatureimagefilename}{}
-\newcommand{\setsignatureimage}[1]{
+\newcommand{\DLsignaturepic}[1]{
   \toggletrue{signatureexists}
   \renewcommand{\@signatureimagefilename}{#1}
 }
 
-\newcommand{\myfoot}[1]{
+\newcommand{\DLfoot}[1]{
   \fancyfoot[c]{\@xcmrmnl #1}
 }
 
 \newcommand{\@showletterdate}{\today}
-\newcommand{\letterdate}[1]{\renewcommand{\@showletterdate}{\@xcmrmn #1}}
+\newcommand{\DLdate}[1]{\renewcommand{\@showletterdate}{\@xcmrmn #1}}
    
 \newcommand{\@showname}{}
-\newcommand{\setname}[1]{\renewcommand{\@showname}{#1}}
+\newcommand{\DLsignature}[1]{\renewcommand{\@showname}{#1}}
 
 \newcommand{\@showwebsite}{}
-\newcommand{\website}[1]{\renewcommand{\@showwebsite}{{\\ #1}}}
+\newcommand{\DLwebsite}[1]{\renewcommand{\@showwebsite}{{\\ #1}}}
 
 \newcommand{\@showcontact}{}
-\newcommand{\contact}[1]{\renewcommand{\@showcontact}
+\newcommand{\DLcontact}[1]{\renewcommand{\@showcontact}
   {
   \vspace*{-1.625cm}
   \\
@@ -87,7 +87,7 @@
 % header with logo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\setheaderimage}[1]{
+\newcommand{\DLheaderpic}[1]{
   \fancypagestyle{firstpage}
     {\fancyhead[C]
       {\includegraphics[height=1in, keepaspectratio=true] {#1}}}}
@@ -100,13 +100,13 @@
 % opening and closing
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\letterstart}[1]{
+\newcommand{\DLopening}[1]{
   \begin{letter}{\@showcontact}
   
   \opening{#1}
 }
 
-\newcommand{\letterend}[1]{
+\newcommand{\DLclosing}[1]{
   \closing{#1 \\
   \iftoggle{signatureexists}
   {

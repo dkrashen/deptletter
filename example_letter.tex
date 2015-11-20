@@ -1,15 +1,15 @@
 \documentclass[10pt]{deptletter}
 \usepackage{hyperref}
 
-\contact{
+\DLcontact{
   John Doe\\
   Associate Professor\\
   Department of Megaphysics\\
   University of Georgia}
-\website{http://website.com}
-\setname{John Doe}
-\letterdate{\today}
-\myfoot{ 
+\DLwebsite{http://website.com}
+\DLsignature{John Doe}
+\DLdate{\today}
+\DLfoot{ 
   Department of Megaphysics -- 
   ~University of Georgia -- 
   ~Graduate Studies Research Center Building\\ 
@@ -17,12 +17,12 @@
   ~Athens, GA --
   ~30602}
 
-\setheaderimage{logo.pdf}
-\setsignatureimage{signature.pdf}
+\DLheaderpic{logo.pdf}
+\DLsignaturepic{signature.pdf}
 
 \begin{document}
 
-\letterstart{Dear Colleague,}
+\DLopening{Dear Colleague,}
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
 Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at
@@ -98,6 +98,6 @@ pede facilisis laoreet. Donec lacus nunc, viverra nec, blandit vel, egestas
 et, augue. 
 
 
-\letterend{Sincerely,}
+\DLclosing{Sincerely,}
 
 \end{document}
