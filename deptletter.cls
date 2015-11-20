@@ -49,9 +49,9 @@
   \renewcommand{\@signatureimagefilename}{#1}
 }
 
-\newcommand{\showmyfoot}{}
-\newcommand{\myfoot}[1]{\renewcommand{\showmyfoot}{\@xcmrmnl #1}}
-\fancyfoot[c]{\showmyfoot}
+\newcommand{\myfoot}[1]{
+  \fancyfoot[c]{\@xcmrmnl #1}
+}
 
 \newcommand{\showletterdate}{\today}
 \newcommand{\letterdate}[1]{\renewcommand{\showletterdate}{\@xcmrmn #1}}
