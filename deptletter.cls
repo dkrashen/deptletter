@@ -30,10 +30,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % some fonts to use for footer, addresses, etcetera
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\DeclareFixedFont{\xcmrbn}{OT1}{cmr}{b}{n}{10}
-\DeclareFixedFont{\xcmrmn}{OT1}{cmr}{m}{n}{10}
-\DeclareFixedFont{\xcmrmnl}{OT1}{cmr}{m}{n}{8}
-\DeclareFixedFont{\ixcmrmn}{OT1}{cmr}{m}{n}{10}
+\DeclareFixedFont{\@xcmrbn}{OT1}{cmr}{b}{n}{10}
+\DeclareFixedFont{\@xcmrmn}{OT1}{cmr}{m}{n}{10}
+\DeclareFixedFont{\@xcmrmnl}{OT1}{cmr}{m}{n}{8}
+\DeclareFixedFont{\@ixcmrmn}{OT1}{cmr}{m}{n}{10}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -50,11 +50,11 @@
 }
 
 \newcommand{\showmyfoot}{}
-\newcommand{\myfoot}[1]{\renewcommand{\showmyfoot}{\xcmrmnl #1}}
+\newcommand{\myfoot}[1]{\renewcommand{\showmyfoot}{\@xcmrmnl #1}}
 \fancyfoot[c]{\showmyfoot}
 
 \newcommand{\showletterdate}{\today}
-\newcommand{\letterdate}[1]{\renewcommand{\showletterdate}{\xcmrmn #1}}
+\newcommand{\letterdate}[1]{\renewcommand{\showletterdate}{\@xcmrmn #1}}
    
 \newcommand{\showname}{}
 \newcommand{\setname}[1]{\renewcommand{\showname}{#1}}
@@ -67,8 +67,8 @@
   {
   \vspace*{-1.625cm}
   \\
-  \xcmrmn #1
-  {\ixcmrmn {\showwebsite}}}}
+  \@xcmrmn #1
+  {\@ixcmrmn {\showwebsite}}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
