@@ -6,6 +6,8 @@
 \RequirePackage{fancyhdr} % headings and footer
 \RequirePackage{pxfonts} % I like this font
 
+\RequirePackage{etoolbox} % for boolean expressions
+
 \RequirePackage[letterpaper]{geometry} % adjustments of margins
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -36,36 +38,28 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% header with logo
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\fancypagestyle{firstpage}
-  {\fancyhead[C]
-    {\includegraphics[height=1in, keepaspectratio=true]{logo.pdf}}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\pagestyle{fancy} % make sure we actually use fancyhdr
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % configurable commands, values set in tex file
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtoggle{headerimage}
+\togglefalse{headerimage}
+\newcommand{\@headerimagefilename}{}
+\newcommand{\setheaderimage}[1]{
+  \toggletrue{headerimage}
+  \renewcommand{\@headerimagefilename}{#1}
+}
+
+\newtoggle{signatureexists}
+\togglefalse{signatureexists}
+\newcommand{\@signatureimagefilename}{}
+\newcommand{\setsignatureimage}[1]{
+  \toggletrue{signatureexists}
+  \renewcommand{\@signatureimagefilename}{#1}
+}
+
 \newcommand{\showmyfoot}{}
 \newcommand{\myfoot}[1]{\renewcommand{\showmyfoot}{\xcmrmnl #1}}
-
 \fancyfoot[c]{\showmyfoot}
-\newcommand{\letterstart}[1]{
-  \begin{letter}{\showcontact}
-  
-  \opening{#1}
-}
-
-\newcommand{\letterend}[1]{
-  \closing{#1 \\
-    \fromsig{\includegraphics[height=.7in]{signature.pdf}}\\
-    \fromname{\showname}}
-  \end{letter}
-}
 
 \newcommand{\showletterdate}{\today}
 \newcommand{\letterdate}[1]{\renewcommand{\showletterdate}{\xcmrmn #1}}
@@ -86,5 +80,48 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% PAGE CONTENT ELEMENTS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \date{\showletterdate} % use the user configured date
+
+\pagestyle{fancy} % make sure we actually use fancyhdr
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% header with logo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\iftoggle{headerimage}
+{
+  \fancypagestyle{firstpage}
+    {\fancyhead[C]
+      {\includegraphics[height=1in, keepaspectratio=true]
+        {\@headerimagefilename}}}
+} {}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% opening and closing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\letterstart}[1]{
+  \begin{letter}{\showcontact}
+  
+  \opening{#1}
+}
+
+\newcommand{\letterend}[1]{
+  \closing{#1 \\
+  \iftoggle{signatureexists}
+  {
+    \fromsig{\includegraphics[height=.7in]{\@signatureimagefilename}}\\
+  } {}
+    \fromname{\showname}}
+  \end{letter}
+}
 
