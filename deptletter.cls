@@ -53,8 +53,8 @@
   \fancyfoot[c]{\@xcmrmnl #1}
 }
 
-\newcommand{\showletterdate}{\today}
-\newcommand{\letterdate}[1]{\renewcommand{\showletterdate}{\@xcmrmn #1}}
+\newcommand{\@showletterdate}{\today}
+\newcommand{\letterdate}[1]{\renewcommand{\@showletterdate}{\@xcmrmn #1}}
    
 \newcommand{\showname}{}
 \newcommand{\setname}[1]{\renewcommand{\showname}{#1}}
@@ -79,7 +79,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\date{\showletterdate} % use the user configured date
+\date{\@showletterdate} % use the user configured date
 
 \pagestyle{fancy} % make sure we actually use fancyhdr
 
