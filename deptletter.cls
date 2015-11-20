@@ -56,19 +56,19 @@
 \newcommand{\@showletterdate}{\today}
 \newcommand{\letterdate}[1]{\renewcommand{\@showletterdate}{\@xcmrmn #1}}
    
-\newcommand{\showname}{}
-\newcommand{\setname}[1]{\renewcommand{\showname}{#1}}
+\newcommand{\@showname}{}
+\newcommand{\setname}[1]{\renewcommand{\@showname}{#1}}
 
-\newcommand{\showwebsite}{}
-\newcommand{\website}[1]{\renewcommand{\showwebsite}{{\\ #1}}}
+\newcommand{\@showwebsite}{}
+\newcommand{\website}[1]{\renewcommand{\@showwebsite}{{\\ #1}}}
 
-\newcommand{\showcontact}{}
-\newcommand{\contact}[1]{\renewcommand{\showcontact}
+\newcommand{\@showcontact}{}
+\newcommand{\contact}[1]{\renewcommand{\@showcontact}
   {
   \vspace*{-1.625cm}
   \\
   \@xcmrmn #1
-  {\@ixcmrmn {\showwebsite}}}}
+  {\@ixcmrmn {\@showwebsite}}}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -101,7 +101,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\letterstart}[1]{
-  \begin{letter}{\showcontact}
+  \begin{letter}{\@showcontact}
   
   \opening{#1}
 }
@@ -112,7 +112,7 @@
   {
     \fromsig{\includegraphics[height=.7in]{\@signatureimagefilename}}\\
   } {}
-    \fromname{\showname}}
+    \fromname{\@showname}}
   \end{letter}
 }
 
