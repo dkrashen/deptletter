@@ -6,6 +6,8 @@
 \RequirePackage{fancyhdr} % headings and footer
 \RequirePackage{pxfonts} % I like this font
 
+\RequirePackage{hyperref} % for website url
+
 \RequirePackage{etoolbox} % for boolean expressions
 
 \RequirePackage[letterpaper]{geometry} % adjustments of margins
@@ -34,6 +36,12 @@
 \DeclareFixedFont{\@xcmrmn}{OT1}{cmr}{m}{n}{10}
 \DeclareFixedFont{\@xcmrmnl}{OT1}{cmr}{m}{n}{8}
 \DeclareFixedFont{\@ixcmrmn}{OT1}{cmr}{m}{n}{10}
+
+%Redefine font for hyperref url links
+\def\url@DLlinkstyle{
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\@ixcmrmn}}}
+\urlstyle{DLlink}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -60,7 +68,7 @@
 \newcommand{\DLsignature}[1]{\renewcommand{\@showname}{#1}}
 
 \newcommand{\@showwebsite}{}
-\newcommand{\DLwebsite}[1]{\renewcommand{\@showwebsite}{{\\ #1}}}
+\newcommand{\DLwebsite}[1]{\renewcommand{\@showwebsite}{{\\ \url{#1}}}}
 
 \newcommand{\@showcontact}{}
 \newcommand{\DLcontact}[1]{\renewcommand{\@showcontact}
