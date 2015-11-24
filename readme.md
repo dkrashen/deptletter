@@ -17,6 +17,8 @@ First, here's a brief description of the required files:
 
 To use the class, just download the above files (although probably not the signature file), and simply modify then `exampleletter.tex` file!
 
+To download, you can either select "download zip" on the lower right to download all files in the repository, or you can download the files individually. to get the individual files, select them above, then clicking on "raw" in the resulting window displaying the file will let you download it to your computer.
+
 
 ----
 
