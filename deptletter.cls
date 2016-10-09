@@ -96,6 +96,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\DLheaderpic}[1]{
+    {\fancyhead[C]
+      {\includegraphics[height=1in, keepaspectratio=true] {#1}}}
   \fancypagestyle{firstpage}
     {\fancyhead[C]
       {\includegraphics[height=1in, keepaspectratio=true] {#1}}}}
